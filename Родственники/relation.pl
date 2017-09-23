@@ -1,0 +1,45 @@
+relation(X,Y,mother):-
+	mother(X,Y).
+relation(X,Y,father):-
+	father(X,Y).
+relation(X,Y,son):-
+	isMale(Y),
+	parent(Y,X).
+relation(X,Y,daughter):-
+	isFemale(Y),
+	parent(Y,X).
+relation(X,Y,aunt):-
+	isFemale(Y),
+	parent(X,A),
+	bc(A,Y).
+relation(X,Y,uncle):-
+	isMale(Y),
+	parent(X,A),
+	bc(A,Y).
+relation(X,Y,nephew):-
+	isMale(Y),
+	parent(Y,A),
+	bc(A,X).
+relation(X,Y,niece):-
+	isFemale(Y),
+	parent(Y,A),
+	bc(A,X).
+relation(X,Y,brother):-
+	isMale(Y),
+	bc(X,Y).
+relation(X,Y,sister):-
+	isFemale(Y),
+	bc(X,Y).	
+relation(X,Y,granny):-
+	isFemale(Y),
+	pred(X,Y).
+relation(X,Y,granddaughter):-
+	isFemale(Y),
+	pred(Y,X).
+relation(X,Y,granddad):-
+	isMale(Y),
+	pred(X,Y).
+relation(X,Y,grandson):-
+	isMale(Y),
+	pred(Y,X).
+relation(X,Y,nobody).
